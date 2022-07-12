@@ -1,0 +1,128 @@
+.c-main .navbar {
+    padding: 0;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFFFFF;
+}
+
+.c-main .navbar .c-image {
+    background-color: #5161F3;
+    padding: 25px 25px 60px 25px;
+}
+
+.c-main .navbar .c-image .logo {
+    width: 160px;
+}
+
+.c-main .navbar .c-user {
+    padding: 0 25px;
+    padding-bottom: 50px;
+    margin-top: -25px;
+}
+
+.c-main .navbar .c-user .user-img {
+    margin-bottom: 10px;
+}
+
+
+.c-main .navbar .c-user .user-data .name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #292D3E;
+    margin-bottom: 0;
+}
+
+.c-main .navbar .c-user .user-data .role {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #616A8A;
+    margin-bottom: 0;
+}
+
+
+.c-main .navbar ul {
+    width: 100%;
+    height: calc(100% - 298px);
+}
+
+.c-main .navbar ul .nav-item {
+    list-style: none;
+}
+
+.c-main .navbar a {
+    display: flex;
+    text-decoration: none;
+    background: #FFFFFF;
+    padding: 15px 25px;
+}
+
+.c-main .navbar a .anticon {
+    color: #616A8A;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.c-main .navbar a .name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    color: #616A8A;
+    margin-bottom: 0;
+}
+
+.c-main .navbar a:hover {
+    background-color: #F9F9F9;
+}
+
+.c-main .navbar a.active {
+    background-color: #F9F9F9;
+}
+
+.c-main .navbar a.active .anticon {
+    color: #5161F3;
+}
+
+.c-main .navbar a.active .name {
+    color: #3F4660;
+}
+
+.c-main .navbar .btn-logout {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 15px 25px;
+    background-color: #F9F9F9;
+    outline: none;
+    border: none;
+}
+
+.c-main .navbar .btn-logout .anticon {
+    color: #616A8A;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.c-main .navbar .btn-logout .content {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #616A8A;
+}
+
+.c-main .navbar .btn-logout:hover .anticon,
+.c-main .navbar .btn-logout:hover .content {
+    color: #5161F3;
+}

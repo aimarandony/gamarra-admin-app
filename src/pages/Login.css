@@ -1,0 +1,22 @@
+.c{
+    width: 100%;
+    height: 100vh;
+}
+.c-login{
+    background: #fff;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+.c-login .card{
+    width: 350px;
+    margin: 20px;
+}
+
+.c-login .card h4 {
+    color: #292D3E;
+}
+
+.c-login .card label {
+    color: #3F4660;
+}
