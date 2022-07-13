@@ -1,0 +1,19 @@
+.c-header-title {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.c-header-title .title {
+    margin-bottom: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 22px;
+    color: #3F4660;
+}

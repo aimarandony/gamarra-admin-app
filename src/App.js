@@ -8,7 +8,7 @@ import {
 import Navbar from "./components/Sidebar";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import Producto from "./pages/Producto";
+import Product from "./pages/Product";
 import 'antd/dist/antd.css';
 import './App.less';
 
@@ -39,7 +39,7 @@ function App() {
                 <PrivateRoute
                   exact
                   path="/producto"
-                  component={Producto}
+                  component={Product}
                   auth={auth}
                 />
               </div>
