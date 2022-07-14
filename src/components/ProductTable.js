@@ -1,11 +1,11 @@
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
-import { Button, Input, Table, Tag } from 'antd';
+import { Button, Input, message, Popconfirm, Table, Tag } from 'antd';
 import React, { useEffect, useState } from 'react'
-import { getProducts } from '../services/ProductService';
+import { deleteProduct, getProducts } from '../services/ProductService';
 
 import './ProductTable.css'
 
-export const ProductTable = () => {
+export const ProductTable = ({setIdEdit, setOpenModal}) => {
 
   const [products, setProducts] = useState([]);
   const [isLoading, setLoading] = useState(true);
@@ -21,12 +21,33 @@ export const ProductTable = () => {
     );
   };
 
+  const handleEdit = (id) => {    
+    setIdEdit(id);
+    setOpenModal(true);
+  }
+
+  const handleDeleteProduct = (id) => {
+    deleteProduct(id)
+      .then(resp => {
+        console.log(resp);
+        message.success("Producto eliminado correctamente.");
+      })
+      .catch(resp => {
+        console.log(resp);
+        if (resp.response.data.message === "Invalid Delete") {
+          message.warn("El producto se encuentra en uso y no puede ser eliminado.");
+        } else {
+          message.error("Ocurrió un error Interno. Vuelva a intentarlo.");
+        }
+      })
+  }
+
   useEffect(() => {
     getProducts().then(resp => {
       resp.map(data => {
         data.key = data.id;
         return data;
-      });      
+      });
       setProducts(resp);
       setLoading(false);
     });
@@ -41,7 +62,7 @@ export const ProductTable = () => {
         <Table.Column title="Talla" dataIndex="size" align='center' />
         <Table.Column title="Color" dataIndex="color" align='center' />
         <Table.Column title="Precio Unit." align='center' render={({ price }) => (<span>S/ {price}</span>)} />
-        <Table.Column title="Stock" align='center' render={({stock}) => (<span>{stock} Unidades</span>)} />
+        <Table.Column title="Stock" align='center' render={({ stock }) => (<span>{stock} Unidades</span>)} />
         <Table.Column title="Estado" align='center' render={({ active }) => (
           <Tag color={active ? "green" : "red"}>
             {active ? "STOCK" : "SIN STOCK"}
@@ -49,15 +70,25 @@ export const ProductTable = () => {
         )} />
         <Table.Column title="Acciones" render={({ id }) => (
           <>
-            <Button type="primary" size="small" icon={<EditOutlined />} style={{ marginRight: "8px" }}>
+            <Button type="ghost" size="small" icon={<EditOutlined />}
+              onClick={() => handleEdit(id)} style={{ marginRight: "8px" }}>
               Editar
             </Button>
-            <Button type="ghost" size="small" icon={<DeleteOutlined />}>
-              Eliminar
-            </Button>
+            <Popconfirm
+              title="¿Desea eliminar este producto?"
+              onConfirm={() => handleDeleteProduct(id)}
+              onCancel={() => { }}
+              okText="Si, Eliminar"
+              cancelText="Cancelar"
+            >
+              <Button type="ghost" size="small" icon={<DeleteOutlined />}>
+                Eliminar
+              </Button>
+            </Popconfirm>
           </>
         )} />
       </Table>
+
     </div >
   )
 }
