@@ -40,8 +40,12 @@ export const ProductModal = ({ open, setOpen, idEdit, setIdEdit }) => {
             message.success("Producto creado correctamente.");
             handleCancel();
           })
-          .catch(() => {
-            message.error("Ocurrió un error al registrar. Inténtelo de nuevo.");
+          .catch(resp => {
+            if (resp.response.status === 404) {
+              message.warn(resp.response.data.description);
+            } else {
+              message.error("Ocurrió un error al registrar. Inténtelo de nuevo.");
+            }
           });
       } else {
         updateProduct(data, idEdit)
@@ -49,8 +53,12 @@ export const ProductModal = ({ open, setOpen, idEdit, setIdEdit }) => {
             message.success("Producto actualizado correctamente.");
             handleCancel();
           })
-          .catch(() => {
-            message.error("Ocurrió un error al registrar. Inténtelo de nuevo.");
+          .catch(resp => {
+            if (resp.response.status === 404) {
+              message.warn(resp.response.data.description);
+            } else {
+              message.error("Ocurrió un error al registrar. Inténtelo de nuevo.");
+            }
           });
       }
 

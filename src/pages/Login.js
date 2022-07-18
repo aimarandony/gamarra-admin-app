@@ -47,7 +47,7 @@ export default function Login({ auth, setAuth }) {
 
   useEffect(() => {
     if (localStorage.getItem("user") !== null) {
-      history.push("/producto");
+      history.push("/inicio");
     }
   });
 
