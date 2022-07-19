@@ -5,15 +5,14 @@ import { deleteProduct, getProducts } from '../services/ProductService';
 
 import './ProductTable.css'
 
-export const ProductTable = ({setIdEdit, setOpenModal}) => {
+export const ProductTable = ({ setIdEdit, setOpenModal, setData, data }) => {
 
-  const [products, setProducts] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [filterTable, setFilterTable] = useState(null);
 
   const handleSearch = (value) => {
     setFilterTable(
-      products.filter((o) =>
+      data.filter((o) =>
         Object.keys(o).some((k) =>
           String(o[k]).toLowerCase().includes(value.toLowerCase())
         )
@@ -21,7 +20,7 @@ export const ProductTable = ({setIdEdit, setOpenModal}) => {
     );
   };
 
-  const handleEdit = (id) => {    
+  const handleEdit = (id) => {
     setIdEdit(id);
     setOpenModal(true);
   }
@@ -30,6 +29,13 @@ export const ProductTable = ({setIdEdit, setOpenModal}) => {
     deleteProduct(id)
       .then(resp => {
         console.log(resp);
+        getProducts().then(resp => {
+          resp.map(data => {
+            data.key = data.id;
+            return data;
+          });
+          setData(resp);
+        });
         message.success("Producto eliminado correctamente.");
       })
       .catch(resp => {
@@ -48,16 +54,16 @@ export const ProductTable = ({setIdEdit, setOpenModal}) => {
         data.key = data.id;
         return data;
       });
-      setProducts(resp);
+      setData(resp);
       setLoading(false);
     });
-  }, [])
+  }, [setData])
 
 
   return (
     <div>
       <Input.Search className='input-search' size='large' placeholder='Buscar Producto' onKeyUpCapture={(e) => handleSearch(e.target.value)} />
-      <Table loading={isLoading} dataSource={filterTable === null ? products : filterTable} pagination={{ pageSize: 4 }} scroll={{ x: 800 }} >
+      <Table loading={isLoading} dataSource={filterTable === null ? data : filterTable} pagination={{ pageSize: 4 }} scroll={{ x: 800 }} >
         <Table.Column title="Descripción" dataIndex="description" />
         <Table.Column title="Talla" dataIndex="size" align='center' />
         <Table.Column title="Color" dataIndex="color" align='center' />

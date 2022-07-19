@@ -5,9 +5,9 @@ import { useFormik } from 'formik';
 import * as Yup from "yup";
 
 import './ProductModal.css'
-import { createProduct, getProductById, updateProduct } from '../services/ProductService';
+import { createProduct, getProductById, getProducts, updateProduct } from '../services/ProductService';
 
-export const ProductModal = ({ open, setOpen, idEdit, setIdEdit }) => {
+export const ProductModal = ({ open, setOpen, idEdit, setIdEdit, setData }) => {
 
   const validationSchema = Yup.object().shape({
     description: Yup.string().trim()
@@ -69,9 +69,16 @@ export const ProductModal = ({ open, setOpen, idEdit, setIdEdit }) => {
     resetForm();
     setOpen(false);
     setIdEdit(0);
+    getProducts().then(resp => {
+      resp.map(data => {
+        data.key = data.id;
+        return data;
+      });
+      setData(resp);
+    })
   }
 
-  let setData = () => {
+  let setDataProduct = () => {
     getProductById(idEdit).then(resp => {
       setValues({
         description: resp.description,
@@ -84,7 +91,7 @@ export const ProductModal = ({ open, setOpen, idEdit, setIdEdit }) => {
   }
 
   useEffect(() => {
-    idEdit !== 0 && setData();
+    idEdit !== 0 && setDataProduct();
     // eslint-disable-next-line
   }, [idEdit])
 

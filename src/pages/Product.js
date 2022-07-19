@@ -7,6 +7,7 @@ import './Product.css'
 
 export default function Product() {
 
+    const [data, setData] = useState([]);
     const [openModal, setOpenModal] = useState(false);
     const [idEdit, setIdEdit] = useState(0);
 
@@ -14,9 +15,9 @@ export default function Product() {
         <div>
             <HeaderTitle title="Productos" btnName="Nuevo Producto" clickEvent={() => setOpenModal(true)} />
             <div className='c-product-content'>
-                <ProductTable setIdEdit={setIdEdit} setOpenModal={setOpenModal} />
+                <ProductTable setIdEdit={setIdEdit} setOpenModal={setOpenModal} setData={setData} data={data}/>
             </div>
-            <ProductModal open={openModal} setOpen={setOpenModal} idEdit={idEdit} setIdEdit={setIdEdit} />
+            <ProductModal open={openModal} setOpen={setOpenModal} idEdit={idEdit} setIdEdit={setIdEdit} setData={setData}/>
         </div>
     )
 }
