@@ -34,7 +34,7 @@ function App() {
           </Route>
           <React.Fragment>
             <div className="c-content">
-              <div className="container">
+              <div className="">
                 <PrivateRoute exact path="/inicio" component={Home} auth={auth} />
                 <PrivateRoute
                   exact

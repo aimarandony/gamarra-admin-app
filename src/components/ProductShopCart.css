@@ -1,0 +1,108 @@
+.c-cart-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.c-cart-item .c-image {
+    width: 60px;
+    height: 82px;
+    overflow: hidden;
+    margin-right: 20px;
+    border: .5px solid #e4e4e4;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.c-cart-item .c-image img {
+    width: 100%;
+}
+
+.c-cart-item .c-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background-color: transparent;
+}
+
+.c-cart-item .c-content .description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #233545;
+    margin-bottom: 5px;
+}
+
+.c-cart-item .c-content .price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #233545;
+    margin-bottom: 10px;
+}
+
+.c-cart-item .c-content .c-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.c-cart-item .c-content .c-quantity .btn-minus {
+    margin-right: 5px;
+}
+
+.c-cart-item .c-content .c-quantity .btn-plus {
+    margin-left: 5px;
+}
+
+.c-cart-item .c-content .c-quantity .text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #233545;
+}
+
+.c-cart-item .c-content .c-quantity .stock {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #233545;
+    margin-left: 6px;
+    margin-bottom: -5px;
+}
+
+.c-shop-drawer-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-shop-drawer-footer .c-price-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 15px;
+}
+
+.c-shop-drawer-footer .c-price-total .text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #233545;
+}
+
+.c-shop-drawer-footer .c-price-total .price {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 19px;
+    color: #233545;
+}

@@ -1,0 +1,26 @@
+.c-home.container {
+    position: relative;
+}
+.c-home .c-button-car {
+    position: fixed;
+    bottom: 100px;
+    right: 200px;
+}
+.c-home .c-button-car .count{
+    position: absolute;
+    top: -2px;
+    right: -4px;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 10000px;
+    z-index: 5;
+}
+.c-home .ant-btn-icon-only.ant-btn-lg {
+    width: 60px;
+    height: 60px;
+}

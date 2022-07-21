@@ -12,7 +12,7 @@ export default function Product() {
     const [idEdit, setIdEdit] = useState(0);
 
     return (
-        <div>
+        <div className='container'>
             <HeaderTitle title="Productos" btnName="Nuevo Producto" clickEvent={() => setOpenModal(true)} />
             <div className='c-product-content'>
                 <ProductTable setIdEdit={setIdEdit} setOpenModal={setOpenModal} setData={setData} data={data}/>
