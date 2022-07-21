@@ -4,13 +4,18 @@ import { Button, Drawer } from 'antd';
 import './ProductShopCart.css'
 import { ProductCartItem } from './ProductCartItem';
 
-export const ProductShopCartList = ({ openDrawer, setOpenDrawer, cart, setCart }) => {
+export const ProductShopCartList = ({ openDrawer, setOpenDrawer, cart, setCart, setOpenModal }) => {
 
     const [total, setTotal] = useState(0)
     const [deleteChange, setDeleteChange] = useState(0)
 
     const onClose = () => {
         setOpenDrawer(false);
+    }
+
+    const handleOpenModal = () => {
+        setOpenDrawer(false);
+        setOpenModal(true);
     }
 
     useEffect(() => {
@@ -29,11 +34,11 @@ export const ProductShopCartList = ({ openDrawer, setOpenDrawer, cart, setCart }
                     <span className='text'>Pago Total</span>
                     <span className='price'>S/ {total}</span>
                 </div>
-                <Button size='large' type='primary' block>COMPRAR</Button>
+                <Button onClick={handleOpenModal} size='large' type='primary' block>COMPRAR</Button>
             </div>}
         >
             {
-                cart.map((product, index) => (<ProductCartItem key={product.id} product={product} cart={cart} setCart={setCart} position={index} setDeleteChange={setDeleteChange}/>))
+                cart.map((product, index) => (<ProductCartItem key={product.id} product={product} cart={cart} setCart={setCart} position={index} setDeleteChange={setDeleteChange} />))
             }
         </Drawer>
     )
