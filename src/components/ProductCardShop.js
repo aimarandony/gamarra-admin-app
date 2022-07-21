@@ -11,8 +11,8 @@ export const ProductCardShop = ({ product, cart, setCart }) => {
   if (product.description.toUpperCase() === "POLO MANGA CORTA" ||
     product.description.toUpperCase() === "POLO MANGA LARGA") {
     productSrc = `${String(product.description).toUpperCase().split(" ").join("_")}_${product.color}.png`;
-    product.urlImage = productSrc;
   }
+  product.urlImage = productSrc;
 
   const addToCart = () => {
     let productFound = cart.filter(e => e.id === product.id);
