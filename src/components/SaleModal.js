@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Divider, Input, Modal, Table } from 'antd';
+import { Button, Divider, Input, message, Modal, Table } from 'antd';
 
 import './SaleModal.css'
+import { createSale } from '../services/SaleService';
+import { getProducts } from '../services/ProductService';
 
-export const SaleModal = ({ openModal, setOpenModal, cart, setCart }) => {
+export const SaleModal = ({ openModal, setOpenModal, cart, setCart, setDataMain }) => {
 
     const [data, setData] = useState([]);
     const [address, setAddress] = useState("");
@@ -34,6 +36,16 @@ export const SaleModal = ({ openModal, setOpenModal, cart, setCart }) => {
         } else {
             setValidAddress(true);
             console.log(sale);
+            createSale(sale).then(resp => {
+                message.success("Venta registrada correctamente");
+                setOpenModal(false);
+                setCart([]);
+                getProducts().then(setDataMain);
+                console.log(resp);
+            }).catch(err => {
+                message.error("Hubo un error al registrar. Vuelva a intentarlo.");
+                console.warn(err);
+            })
         }
     }
 

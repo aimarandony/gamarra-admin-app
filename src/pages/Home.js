@@ -12,7 +12,7 @@ export default function Home() {
 
     const [data, setData] = useState([]);
     const [openDrawer, setOpenDrawer] = useState(false);
-    const [openModal, setOpenModal] = useState(true);
+    const [openModal, setOpenModal] = useState(false);
     const [cart, setCart] = useState([]);
 
     useEffect(() => {
@@ -28,7 +28,7 @@ export default function Home() {
                     icon={<ShoppingFilled style={{ display: 'inline-flex' }} />} size='large' />
             </div>
             <ProductShopCartList openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} cart={cart} setCart={setCart} setOpenModal={setOpenModal} />
-            <SaleModal openModal={openModal} setOpenModal={setOpenModal} cart={cart} setCart={setCart}/>
+            <SaleModal setDataMain={setData} openModal={openModal} setOpenModal={setOpenModal} cart={cart} setCart={setCart}/>
         </div>
     )
 }

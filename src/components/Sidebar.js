@@ -22,14 +22,14 @@ export default function Navbar({ auth, setAuth }) {
         <img src={Profile} className="user-img" alt="User" />
         <div className="user-data">
           <h2 className="name">Antonio Rivas,</h2>
-          <h6 className="role">Administrador</h6>
+          <h6 className="role">Usuario</h6>
         </div>
       </div>
       <ul>
         <li className="nav-item">
           <NavLink activeClassName="active" to="/inicio">
             <HomeOutlined />
-            <span className="name">Inicio</span>
+            <span className="name">Venta</span>
           </NavLink>
         </li>
         <li className="nav-item">
