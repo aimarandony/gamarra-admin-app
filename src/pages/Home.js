@@ -23,7 +23,7 @@ export default function Home() {
         <div className='c-home container'>
             <ProductShopList productList={data} cart={cart} setCart={setCart}/>
             <div className='c-button-car'>
-                <span className='count'>{cart.length}</span>
+                <span className={`count ${cart.length === 0 ? 'd-none' : ''}`}>{cart.length}</span>
                 <Button type='primary' shape='circle' onClick={() => setOpenDrawer(true)}
                     icon={<ShoppingFilled style={{ display: 'inline-flex' }} />} size='large' />
             </div>
